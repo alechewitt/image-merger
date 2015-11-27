@@ -33,9 +33,9 @@ class PaternizeApp {
         this.canvas.width = size;
 
         // Img srcs
-        this.image0Src = "/windmills.jpg";
-        this.image1Src = "/earth.jpg";
-        this.patternSrc = "/spiral.png";
+        this.image0Src = "windmills.jpg";
+        this.image1Src = "earth.jpg";
+        this.patternSrc = "spiral.png";
 
         // Textures
         this.texImage0 = null;
