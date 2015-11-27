@@ -13,7 +13,6 @@ window.onload = function() {
     paternize.init();
     rangeSelector.addEventListener("input", function(event) {
         var newValue = rangeSelector.value / 100;
-        console.log("Drawing: ", newValue);
         paternize.updatePatternScale(newValue);
     })
 
@@ -93,7 +92,6 @@ class PaternizeApp {
      * Method to draw the canvas
      */
     draw() {
-        console.log("drawing!");
         if (this.currentPatternScale !== this.requestedPatternScale) {
             // Set pattern width
             this.gl.uniform1f(this.uPatternWidth, this.requestedPatternScale);
@@ -172,7 +170,6 @@ class PaternizeApp {
     createShaderProgram_(vertexShaderSource, fragmentShaderSource) {
         // Compile Vertex Shader:
         let vsh = this.gl.createShader(this.gl.VERTEX_SHADER);
-        console.log("vertexShaderSource: ", vertexShaderSource);
         this.gl.shaderSource(vsh, vertexShaderSource);
         this.gl.compileShader(vsh);
         if (!this.gl.getShaderParameter(vsh, this.gl.COMPILE_STATUS)) {
