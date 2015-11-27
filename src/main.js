@@ -6,9 +6,9 @@ import fragmentShader from "./fragment-shader.frag";
 // Main Entry point which sets up the game
 window.onload = function() {
 
-    let canvas = document.getElementById("gameCanvas");
+    let canvas = document.getElementById("imageCanvas");
     let rangeSelector = document.getElementById("rangeSelector");
-    var canvasSize = Math.min((window.innerHeight - 200), (window.innerWidth - 100));
+    var canvasSize = Math.min((window.innerHeight - 100), (window.innerWidth - 100));
     let paternize = new PaternizeApp(canvas, canvasSize);
     paternize.init();
     rangeSelector.addEventListener("input", function(event) {
@@ -32,9 +32,9 @@ class PaternizeApp {
         this.canvas.width = size;
 
         // Img srcs
-        this.image0Src = "windmills.jpg";
-        this.image1Src = "earth.jpg";
-        this.patternSrc = "spiral.png";
+        this.image0Src = "textures/windmills.jpg";
+        this.image1Src = "textures/earth.jpg";
+        this.patternSrc = "textures/spiral.png";
 
         // Textures
         this.texImage0 = null;
