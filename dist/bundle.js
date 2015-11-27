@@ -959,6 +959,29 @@ module.exports = function parse(params){
 },{}],60:[function(require,module,exports){
 "use strict";
 
+var _interopRequireDefault = require("babel-runtime/helpers/interop-require-default")["default"];
+
+var _paternizeJs = require("./paternize.js");
+
+var _paternizeJs2 = _interopRequireDefault(_paternizeJs);
+
+// Main Entry point which sets up the game
+window.onload = function () {
+
+    var canvas = document.getElementById("imageCanvas");
+    var rangeSelector = document.getElementById("rangeSelector");
+    var canvasSize = Math.min(window.innerHeight - 100, window.innerWidth - 100);
+    var paternize = new _paternizeJs2["default"](canvas, canvasSize);
+    paternize.init();
+    rangeSelector.addEventListener("input", function (event) {
+        var newValue = rangeSelector.value / 100;
+        paternize.updatePatternScale(newValue);
+    });
+};
+
+},{"./paternize.js":61,"babel-runtime/helpers/interop-require-default":5}],61:[function(require,module,exports){
+"use strict";
+
 var _createClass = require("babel-runtime/helpers/create-class")["default"];
 
 var _classCallCheck = require("babel-runtime/helpers/class-call-check")["default"];
@@ -966,6 +989,10 @@ var _classCallCheck = require("babel-runtime/helpers/class-call-check")["default
 var _Promise = require("babel-runtime/core-js/promise")["default"];
 
 var _interopRequireDefault = require("babel-runtime/helpers/interop-require-default")["default"];
+
+Object.defineProperty(exports, "__esModule", {
+    value: true
+});
 
 var _vertexShaderVert = require("./vertex-shader.vert");
 
@@ -975,22 +1002,9 @@ var _fragmentShaderFrag = require("./fragment-shader.frag");
 
 var _fragmentShaderFrag2 = _interopRequireDefault(_fragmentShaderFrag);
 
-// Main Entry point which sets up the game
-window.onload = function () {
-
-    var canvas = document.getElementById("imageCanvas");
-    var rangeSelector = document.getElementById("rangeSelector");
-    var canvasSize = Math.min(window.innerHeight - 100, window.innerWidth - 100);
-    var paternize = new PaternizeApp(canvas, canvasSize);
-    paternize.init();
-    rangeSelector.addEventListener("input", function (event) {
-        var newValue = rangeSelector.value / 100;
-        paternize.updatePatternScale(newValue);
-    });
-};
-
 // Width and height of our images
 var IMAGE_SIZE = 512;
+
 /**
  * Create A WebGL context to merge two images together
  */
@@ -1214,7 +1228,10 @@ var PaternizeApp = (function () {
     return PaternizeApp;
 })();
 
-},{"./fragment-shader.frag":59,"./vertex-shader.vert":61,"babel-runtime/core-js/promise":2,"babel-runtime/helpers/class-call-check":3,"babel-runtime/helpers/create-class":4,"babel-runtime/helpers/interop-require-default":5}],61:[function(require,module,exports){
+exports["default"] = PaternizeApp;
+module.exports = exports["default"];
+
+},{"./fragment-shader.frag":59,"./vertex-shader.vert":62,"babel-runtime/core-js/promise":2,"babel-runtime/helpers/class-call-check":3,"babel-runtime/helpers/create-class":4,"babel-runtime/helpers/interop-require-default":5}],62:[function(require,module,exports){
 module.exports = function parse(params){
       var template = "attribute vec2 a_coords; \n" +
 "varying vec2 v_texCoord; \n" +
